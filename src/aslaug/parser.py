@@ -123,6 +123,16 @@ def make_parser():
         action="store_true",
     )
     parser.add_argument(
+        "--save_assets",
+        help="DEPRECATED. Non-functional in Brunnhilde 1.9.1+ but retained for API stability",
+        action="store",
+    )
+    parser.add_argument(
+        "--load_assets",
+        help="DEPRECATED. Non-functional in Brunnhilde 1.9.1+ but retained for API stability",
+        action="store",
+    )
+    parser.add_argument(
         "--csv",
         help="Path to Siegfried CSV file to read as input (directories only)",
         action="store",
@@ -146,6 +156,16 @@ def make_parser():
     )
     parser.add_argument("source", help="Path to source directory or disk image")
     parser.add_argument("destination", help="Path to destination for reports")
+    parser.add_argument(
+        "basename",
+        nargs="?",
+        default=None,
+        help=(
+            "DEPRECATED. Accession number or identifier, used as basename for outputs. "
+            "Prefer using the new simpler `brunnhilde.py source destination` syntax. "
+            "The basename argument is retained for API stability and used when provided."
+        ),
+    )
 
     return parser
 

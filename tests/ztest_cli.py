@@ -42,7 +42,7 @@ class TestBrunnhildeIntegration(SelfCleaningTestCase):
     def test_integration_existing_output_dir_quits(self):
         os.makedirs(self.TEST_REPORT_DIR)
         subprocess.call(
-            'python src/aslaug -n ./tests/test-data/files/ "%s" test' % (self.dest_tmpdir),
+            'python -m aslaug -n ./tests/test-data/files/ "%s" test' % (self.dest_tmpdir),
             shell=True,
         )
         self.assertFalse(is_non_zero_file(j(self.TEST_REPORT_DIR, "siegfried.csv")))
@@ -50,7 +50,7 @@ class TestBrunnhildeIntegration(SelfCleaningTestCase):
     def test_integration_existing_output_dir_overwrites(self):
         os.makedirs(self.TEST_REPORT_DIR)
         subprocess.call(
-            'python src/aslaug -n --overwrite ./tests/test-data/files/ "%s" test'
+            'python -m aslaug -n --overwrite ./tests/test-data/files/ "%s" test'
             % (self.dest_tmpdir),
             shell=True,
         )
@@ -61,7 +61,7 @@ class TestBrunnhildeIntegration(SelfCleaningTestCase):
         """Test `aslaug src dest` syntax introduced in 1.9.0.
         """
         subprocess.call(
-            'python src/aslaug -n ./tests/test-data/files/ "%s"' % (self.TEST_REPORT_DIR),
+            'python -m aslaug -n ./tests/test-data/files/ "%s"' % (self.TEST_REPORT_DIR),
             shell=True,
         )
         self.assertTrue(is_non_zero_file(j(self.TEST_REPORT_DIR, "siegfried.csv")))
@@ -69,7 +69,7 @@ class TestBrunnhildeIntegration(SelfCleaningTestCase):
 
     def test_integration_outputs_created(self):
         subprocess.call(
-            'python src/aslaug -n ./tests/test-data/files/ "%s" test' % (self.dest_tmpdir),
+            'python -m aslaug -n ./tests/test-data/files/ "%s" test' % (self.dest_tmpdir),
             shell=True,
         )
         # siegfried csv and sqlite db
@@ -97,7 +97,7 @@ class TestBrunnhildeIntegration(SelfCleaningTestCase):
 
     def test_integration_outputs_created_diskimage(self):
         subprocess.call(
-            'python src/aslaug -nd ./tests/test-data/diskimages/sample-floppy-fat.dd "%s" test'
+            'python -m aslaug -nd ./tests/test-data/diskimages/sample-floppy-fat.dd "%s" test'
             % (self.dest_tmpdir),
             shell=True,
         )
@@ -135,7 +135,7 @@ class TestBrunnhildeIntegration(SelfCleaningTestCase):
 
     def test_integration_temp_files_deleted(self):
         subprocess.call(
-            'python src/aslaug -n ./tests/test-data/files/ "%s" test' % (self.dest_tmpdir),
+            'python -m aslaug -n ./tests/test-data/files/ "%s" test' % (self.dest_tmpdir),
             shell=True,
         )
         # uniqueyears.csv
@@ -145,7 +145,7 @@ class TestBrunnhildeIntegration(SelfCleaningTestCase):
 
     def test_integration_clamav(self):
         subprocess.call(
-            'python src/aslaug ./tests/test-data/files/ "%s" test' % (self.dest_tmpdir),
+            'python -m aslaug ./tests/test-data/files/ "%s" test' % (self.dest_tmpdir),
             shell=True,
         )
         # virus log correctly written
@@ -157,7 +157,7 @@ class TestBrunnhildeIntegration(SelfCleaningTestCase):
 
     def test_integration_clamav_largefiles(self):
         subprocess.call(
-            'python src/aslaug -l ./tests/test-data/files/ "%s" test' % (self.dest_tmpdir),
+            'python -m aslaug -l ./tests/test-data/files/ "%s" test' % (self.dest_tmpdir),
             shell=True,
         )
         # virus log correctly written
@@ -169,7 +169,7 @@ class TestBrunnhildeIntegration(SelfCleaningTestCase):
 
     def test_integration_clamav_diskimage(self):
         subprocess.call(
-            'python src/aslaug -d ./tests/test-data/diskimages/sample-floppy-fat.dd "%s" test'
+            'python -m aslaug -d ./tests/test-data/diskimages/sample-floppy-fat.dd "%s" test'
             % (self.dest_tmpdir),
             shell=True,
         )
@@ -182,7 +182,7 @@ class TestBrunnhildeIntegration(SelfCleaningTestCase):
 
     def test_integration_retain_sqlite_db(self):
         subprocess.call(
-            'python src/aslaug -k ./tests/test-data/files/ "%s" test' % (self.dest_tmpdir),
+            'python -m aslaug -k ./tests/test-data/files/ "%s" test' % (self.dest_tmpdir),
             shell=True,
         )
         self.assertTrue(is_non_zero_file(j(self.TEST_REPORT_DIR, "siegfried.sqlite")))
