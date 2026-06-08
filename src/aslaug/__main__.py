@@ -1,21 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-"""
-Brunnhilde
----
-
-A Siegfried-based characterization tool for disk images and directories.
-
-For information on usage and dependencies, see: github.com/tw4l/brunnhilde
-
-Python 2.7 & 3.4+
-
-The MIT License (MIT)
-Copyright (c) 2017-2020 Tessa Walsh
-https://bitarchivist.net
-
-"""
 from __future__ import print_function
 
 import argparse
@@ -33,8 +15,10 @@ import sqlite3
 import subprocess
 import sys
 
+from importlib.metadata import version
 
-BRUNNHILDE_VERSION = "brunnhilde 1.9.6"
+# BRUNNHILDE_VERSION = "brunnhilde 1.9.6"
+ASLAUG_VERSION = version("aslaug")
 
 CSS = """
 body {
@@ -162,7 +146,7 @@ def _determine_hash_type(args):
 
 
 def run_siegfried(args, source_dir, use_hash):
-    """Run siegfried on directory"""
+    """Run siegfried on directory: Writes results to sf_file location"""
     log_info("Running Siegfried.", time_warning=True)
     global sf_command
     if use_hash:
@@ -514,7 +498,7 @@ def create_html_report(
     )
     html.write("\n<p><strong>Accession/identifier:</strong> {}</p>".format(basename))
     html.write(
-        "\n<p><strong>Brunnhilde version:</strong> {}</p>".format(BRUNNHILDE_VERSION)
+        "\n<p><strong>Brunnhilde version:</strong> {}</p>".format(ASLAUG_VERSION)
     )
     if not (args.csv or args.stdin):
         html.write(
@@ -1149,7 +1133,7 @@ def _make_parser():
         "--version",
         help="Display Brunnhilde version",
         action="version",
-        version=BRUNNHILDE_VERSION,
+        version=ASLAUG_VERSION,
     )
     parser.add_argument(
         "-w",
@@ -1390,4 +1374,5 @@ def main():
 
 
 if __name__ == "__main__":
+    # print("hello world")
     main()

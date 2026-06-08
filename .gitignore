@@ -1,3 +1,4 @@
-brunnhilde.egg-info/
+aslaug.egg-info/
 dist/
 .tox/
+__pycache__

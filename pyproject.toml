@@ -1,0 +1,49 @@
+[project]
+name = "aslaug"
+version = "0.1.0"
+description = " Siegfried-based characterization tool for directories and disk images based on Brunnhilde"
+readme = "README.md"
+authors = [
+  { name = "Greg Sides", email = "sidesg@gmail.com" },
+]
+requires-python = ">=3.10"
+
+keywords = [
+    "archives",
+    "reporting",
+    "characterization",
+    "identification",
+    "diskimages",
+]
+classifiers = [
+        "Development Status :: 3 - Alpha",
+        "License :: OSI Approved :: MIT License",
+        "Intended Audience :: End Users/Desktop",
+        "Intended Audience :: Developers",
+        "Natural Language :: English",
+        "Operating System :: MacOS",
+        "Operating System :: MacOS :: MacOS X",
+        "Operating System :: POSIX :: Linux",
+        "Operating System :: Microsoft :: Windows",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
+        "Programming Language :: Python :: 3.14",
+        "Topic :: System :: Archiving",
+        "Topic :: System :: Filesystems",
+        "Topic :: Utilities",
+]
+
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.3",
+]
+
+[tool.pytest.ini_options]
+pythonpath = [
+  "."
+]
+
